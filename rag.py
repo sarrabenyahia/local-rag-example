@@ -19,9 +19,10 @@ class ChatPDF:
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=100)
         self.prompt = PromptTemplate.from_template(
             """
-            <s> [INST] Vous êtes un assistant pour les tâches de réponse aux questions. Utilisez les éléments de contexte suivants pour répondre à la question. 
-            Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.. Utilisez trois phrases
-             maximum et soyez concis dans votre réponse. [/INST] </s> 
+            <s> [INST] Vous êtes un assistant pour les tâches de réponse aux questions. 
+            Utilisez les éléments de contexte suivants pour répondre à la question. 
+            Si vous ne connaissez pas la réponse, dites simplement que vous ne savez pas.. 
+            Utilisez trois phrases maximum et soyez concis dans votre réponse. [/INST] </s> 
             [INST] Question: {question} 
             Context: {context} 
             Answer: [/INST]
@@ -38,7 +39,7 @@ class ChatPDF:
             search_type="similarity_score_threshold",
             search_kwargs={
                 "k": 3,
-                "score_threshold": 0.5,
+                "score_threshold": 0.2,
             },
         )
 
